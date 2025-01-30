@@ -1,29 +1,5 @@
 
 
-
-
-/*
-
-#pragma once
-#include <vector>
-#include <cstdint>
-
-const size_t PAGE_SIZE = 4096; // Размер страницы 4 КБ
-
-class Page {
-public:
-    Page();
-    std::vector<uint8_t>& getData();
-    const std::vector<uint8_t>& getData() const;
-    void setData(const std::vector<uint8_t>& newData);
-
-private:
-    std::vector<uint8_t> data_;
-};
-
-
-*/
-
 #pragma once
 #include <vector>
 #include <cstdint>
@@ -56,6 +32,6 @@ private:
     // Методы для работы с заголовком
     size_t getRecordOffset(size_t index) const;
     void setRecordOffset(size_t index, size_t offset);
-   // size_t getRecordCount() const;
+
     void setRecordCount(size_t count);
 };

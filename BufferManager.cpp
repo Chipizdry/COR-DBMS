@@ -1,5 +1,6 @@
 #include "BufferManager.h"
 #include <stdexcept>
+#include <iostream> // Для std::cout
 
 BufferManager::BufferManager(size_t maxPages, const std::string& fileName, std::unique_ptr<ReplacementStrategy> strategy)
     : maxPages_(maxPages), fileManager_(fileName), replacementStrategy_(std::move(strategy)) {
@@ -51,14 +52,25 @@ void BufferManager::flushAll() {
 }
 
 void BufferManager::evictPage() {
-    // Получаем страницу для замещения от стратегии
-    size_t pageIndexToEvict = replacementStrategy_->evict();
-
-    // Если страница была изменена, записываем её на диск
-    if (frames_[pageIndexToEvict].isDirty) {
-        fileManager_.writePage(pageIndexToEvict, frames_[pageIndexToEvict].page);
+    if (frames_.empty()) {
+        throw std::runtime_error("No pages to evict.");
     }
 
-    // Удаляем страницу из памяти
-    frames_.erase(pageIndexToEvict);
+    size_t pageIndex = replacementStrategy_->evict(); // Стратегия выбирает страницу для замещения
+
+    // Проверяем наличие страницы
+    auto it = frames_.find(pageIndex);
+    if (it == frames_.end()) {
+        throw std::runtime_error("Page to evict not found in buffer.");
+    }
+
+    std::cout << "Evicting page " << pageIndex << " from buffer.\n";
+
+    if (it->second.isDirty) {
+        fileManager_.writePage(pageIndex, it->second.page);
+        std::cout << "Page " << pageIndex << " written to disk before eviction.\n";
+    }
+
+    frames_.erase(it); // Удаляем страницу из буфера
+    std::cout << "Page " << pageIndex << " evicted.\n";
 }

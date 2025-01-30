@@ -1,7 +1,7 @@
+#ifndef FILEMANAGER_H
+#define FILEMANAGER_H
 
-
-
-#pragma once
+#include <fstream>
 #include <string>
 #include "Page.h"
 
@@ -12,5 +12,8 @@ public:
     Page readPage(size_t pageIndex);
 
 private:
-    std::string fileName_;
+    std::string fileName_;   // ָלÿ פאיכא
+    std::fstream file_;      // ׳כום הכÿ נאבמעû ס פאיכמל
 };
+
+#endif // FILEMANAGER_H

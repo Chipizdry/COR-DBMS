@@ -145,6 +145,7 @@
     <ClInclude Include="LRUReplacementStrategy.h" />
     <ClInclude Include="Page.h" />
     <ClInclude Include="ReplacementStrategy.h" />
+    <ClInclude Include="Table.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

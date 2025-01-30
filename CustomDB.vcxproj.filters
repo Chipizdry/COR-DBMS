@@ -17,9 +17,6 @@
     <ClCompile Include="FileManager.cpp">
       <Filter>Src</Filter>
     </ClCompile>
-    <ClCompile Include="main.cpp">
-      <Filter>Src</Filter>
-    </ClCompile>
     <ClCompile Include="BufferManager.cpp">
       <Filter>Src</Filter>
     </ClCompile>
@@ -30,6 +27,9 @@
       <Filter>Src</Filter>
     </ClCompile>
     <ClCompile Include="ClockReplacementStrategy.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
       <Filter>Src</Filter>
     </ClCompile>
   </ItemGroup>
@@ -53,6 +53,9 @@
       <Filter>Include</Filter>
     </ClInclude>
     <ClInclude Include="ClockReplacementStrategy.h">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="Table.h">
       <Filter>Include</Filter>
     </ClInclude>
   </ItemGroup>
